@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'Donation_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("MYSQLDATABASE", "webdb6"),
-        'USER': os.environ.get("MYSQLUSER", "root"),
-        'PASSWORD': os.environ.get("MYSQLPASSWORD", "root"),
-        'HOST': os.environ.get("MYSQLHOST", "127.0.0.1"),
-        'PORT': os.environ.get("MYSQLPORT", "3306"),
+        'NAME': os.getenv('MYSQLDATABASE'),
+        'USER': os.getenv('MYSQLUSER'),
+        'PASSWORD': os.getenv('MYSQLPASSWORD'),
+        'HOST': os.getenv('MYSQLHOST'),
+        'PORT': os.getenv('MYSQLPORT'),
     }
 }
 
