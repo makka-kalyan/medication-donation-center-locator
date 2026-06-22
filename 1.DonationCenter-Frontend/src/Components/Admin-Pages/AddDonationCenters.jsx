@@ -2,6 +2,7 @@ import "./AddDonationCenters.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../Service/api";
 
 const AddDonationCenter = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -25,7 +26,7 @@ const AddDonationCenter = () => {
 
   try {
     const res = await axios.post(
-      "http://127.0.0.1:8000/api/admin/add-center/",
+      `${API_BASE_URL}/api/admin/add-center/`,
       {
         center_name: centerName,
         location,

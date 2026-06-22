@@ -1,6 +1,7 @@
 import "./CenterTimings.css";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../Service/api";
 import { useEffect, useState } from "react";
 
 const CenterTimings = () => {
@@ -11,7 +12,7 @@ const CenterTimings = () => {
   
   const loadCenters = async () => {
     const res = await axios.get(
-      "http://127.0.0.1:8000/api/admin/centers/"
+      `${API_BASE_URL}/api/admin/centers/`
     );
     setCenters(res.data.centers || []);
   };
@@ -19,7 +20,7 @@ const CenterTimings = () => {
   
   const updateTiming = async (id) => {
     const res = await axios.post(
-      "http://127.0.0.1:8000/api/admin/update-timing/",
+      `${API_BASE_URL}/api/admin/update-timing/`,
       { id, timings: newTiming }
     );
     alert(res.data.success);
@@ -31,7 +32,7 @@ const CenterTimings = () => {
   
   const toggleStatus = async (id, status) => {
     const res = await axios.post(
-      "http://127.0.0.1:8000/api/admin/toggle-center/",
+      `${API_BASE_URL}/api/admin/toggle-center/`,
       { id, status }
     );
     alert(res.data.success);

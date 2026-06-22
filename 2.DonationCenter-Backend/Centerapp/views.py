@@ -9,13 +9,13 @@ import os
 def get_db_connection():
     """Reusable MySQL connection (always returns DictCursor)"""
     return pymysql.connect(
-        host='127.0.0.1',
-        port=3306,
-        user='root',
-        password='root',
-        database='webdb6',
-        cursorclass=pymysql.cursors.DictCursor  
-    )
+    host=os.environ.get("MYSQLHOST", "127.0.0.1"),
+    port=int(os.environ.get("MYSQLPORT", 3306)),
+    user=os.environ.get("MYSQLUSER", "root"),
+    password=os.environ.get("MYSQLPASSWORD", "root"),
+    database=os.environ.get("MYSQLDATABASE", "webdb6"),
+    cursorclass=pymysql.cursors.DictCursor
+)
 
 def ensure_single_admin():
     try:

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-r16y8gk5+ka_$0okl^m@tl+*f_tl_#_1k0avmpkt5t3b&%@)8l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -83,11 +84,11 @@ WSGI_APPLICATION = 'Donation_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'webdb6',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': os.environ.get("MYSQLDATABASE", "webdb6"),
+        'USER': os.environ.get("MYSQLUSER", "root"),
+        'PASSWORD': os.environ.get("MYSQLPASSWORD", "root"),
+        'HOST': os.environ.get("MYSQLHOST", "127.0.0.1"),
+        'PORT': os.environ.get("MYSQLPORT", "3306"),
     }
 }
 

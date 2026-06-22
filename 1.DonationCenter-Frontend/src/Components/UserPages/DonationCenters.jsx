@@ -1,6 +1,7 @@
 import "./DonationCenters.css";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../Service/api";
 import { useEffect, useState } from "react";
 
 const DonationCenters = () => {
@@ -9,7 +10,7 @@ const DonationCenters = () => {
   
   const loadCenters = async () => {
     const res = await axios.get(
-      "http://127.0.0.1:8000/api/admin/centers/"
+      `${API_BASE_URL}/api/admin/centers/`
     );
 
     

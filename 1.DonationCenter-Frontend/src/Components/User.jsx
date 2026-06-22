@@ -1,5 +1,6 @@
 import "./User.css";
 import axios from "axios";
+import { API_BASE_URL } from "./Service/api";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const User = () => {
     const username = localStorage.getItem("username");
 
     const res = await axios.get(
-      `http://127.0.0.1:8000/api/userdetails/?username=${username}`
+      `${API_BASE_URL}/api/userdetails/?username=${username}`
     );
 
     setUser(res.data.user);

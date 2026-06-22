@@ -1,5 +1,6 @@
 import "./Admin.css";
 import axios from "axios";
+import { API_BASE_URL } from "./Service/api";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const Admin = () => {
 
   
   const loadUsers = async () => {
-    const res = await axios.get("http://127.0.0.1:8000/api/admin/");
+    const res = await axios.get(`${API_BASE_URL}/api/admin/`);
     setUsers(res.data.users || []);
   };
 
@@ -21,7 +22,7 @@ const Admin = () => {
   
   const approveUser = async (username) => {
     const res = await axios.post(
-      "http://127.0.0.1:8000/api/approve/",
+      `${API_BASE_URL}/api/approve/`,
       { username }
     );
     alert(res.data.success);
